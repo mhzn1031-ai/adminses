@@ -9,10 +9,6 @@ services:
     envVars:
       - key: SECRET_KEY
         generateValue: true
-      - key: ADMIN_USER
-        value: admin
-      - key: ADMIN_PASS
-        sync: false
       - key: REDIS_URL
         fromService:
           type: redis
@@ -26,8 +22,6 @@ services:
         value: 6476943853
       - key: ALLOWED_ORIGINS
         value: "*"
-      - key: PYTHON_VERSION
-        value: 3.11.0
 
   - type: redis
     name: admin-ses-redis
