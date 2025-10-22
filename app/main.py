@@ -9,7 +9,7 @@ import logging
 from typing import Dict, Set
 from contextlib import asynccontextmanager
 
-from app.webrtc_handler import handle_record_offer, stop_recording as webrtc_stop_recording
+# from app.webrtc_handler import handle_record_offer, stop_recording as webrtc_stop_recording
 from app.telegram_bot import send_call_notification, send_otp, generate_otp
 from app.otp_store import OTPStore
 from app.models import CallSession
@@ -260,49 +260,13 @@ async def get_pending_calls(req: Request):
 
 @app.post("/api/record/offer")
 async def record_offer_endpoint(req: Request):
-    """
-    Accepts JSON body:
-    {
-      "sdp": "<offer sdp>",
-      "type": "offer",
-      "session_id": "<optional session id>",
-      "role": "agent"|"caller"
-    }
-    Returns:
-    { "sdp": "<answer sdp>", "type": "answer" }
-    """
-    data = await req.json()
-    sdp = data.get("sdp")
-    sdp_type = data.get("type", "offer")
-    session_id = data.get("session_id")
-    role = data.get("role", "unknown")
-    if not sdp:
-        raise HTTPException(status_code=400, detail="sdp required")
-    try:
-        res = await handle_record_offer(sdp, sdp_type, session_id, role)
-        return res
-    except Exception as e:
-        logger.exception("handle_record_offer failed")
-        raise HTTPException(status_code=500, detail="record offer failed")
+    """Recording disabled on Render free plan (no FFmpeg)"""
+    return {"sdp": "", "type": "answer", "disabled": True}
 
 @app.post("/api/record/stop")
 async def record_stop_endpoint(req: Request):
-    """
-    Accepts JSON body:
-    { "session_id": "<session>", "role": "agent"|"caller" }
-    Stops server-side recording and returns file info.
-    """
-    data = await req.json()
-    session_id = data.get("session_id")
-    role = data.get("role", "unknown")
-    try:
-        info = await webrtc_stop_recording(session_id, role)
-        if not info:
-            return {"ok": False, "msg": "no active recorder"}
-        return {"ok": True, "file": info.get("file"), "s3": info.get("s3")}
-    except Exception:
-        logger.exception("record_stop failed")
-        raise HTTPException(status_code=500, detail="stop failed")
+    """Recording disabled on Render free plan (no FFmpeg)"""
+    return {"ok": False, "msg": "recording disabled"}
 
 # WebSocket endpoint for signaling
 @app.websocket("/ws/{client_id}")
