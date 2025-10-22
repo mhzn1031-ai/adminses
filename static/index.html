@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teknik Destek - Arama</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div id="nameScreen">
+    <h2>Teknik Destek</h2>
+    <p>Lütfen adınızı girin ve arama yapın</p>
+    <input id="callerName" type="text" placeholder="Adınız" maxlength="50" />
+    <button id="callBtn">Arama Yap</button>
+  </div>
+
+  <div id="callScreen" style="display:none">
+    <div id="callInfo">
+      <span id="callerNameDisplay"></span>
+      <span id="callDuration">00:00</span>
+    </div>
+    <div id="videoContainer">
+      <video id="remoteVideo" autoplay playsinline></video>
+      <video id="localVideo" autoplay muted playsinline></video>
+      <button id="fullscreenBtn" title="Tam Ekran">⛶</button>
+    </div>
+    <div id="controls">
+      <button id="toggleAudio" class="active">🔊 Ses</button>
+      <button id="toggleVideo">📷 Kamera</button>
+      <button id="toggleSpeaker" class="active">🔈 Hoparlör</button>
+      <button id="toggleIntercom">📞 Diafon</button>
+      <button id="hangupBtn" class="hangup">Kapat</button>
+    </div>
+  </div>
+
+  <script src="/static/js/common.js"></script>
+  <script src="/static/js/client.js"></script>
+</body>
+</html>

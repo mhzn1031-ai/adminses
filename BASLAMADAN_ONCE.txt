@@ -1,0 +1,81 @@
+========================================
+TEKNİK DESTEK SİSTEMİ - BAŞLAMADAN ÖNCE
+========================================
+
+1. PYTHON KURULU MU?
+   
+   Komut satırını açın (Windows tuşu + R, "cmd" yazın)
+   Şunu yazın: python --version
+   
+   ✓ Eğer "Python 3.x.x" görüyorsanız → 2. adıma geçin
+   ✗ Eğer hata alıyorsanız → Python kurmanız gerekiyor
+
+
+2. PYTHON KURULUMU (Kurulu değilse)
+   
+   a) https://www.python.org/downloads/ adresine gidin
+   b) "Download Python 3.11" butonuna tıklayın
+   c) İndirilen dosyayı çalıştırın
+   d) ÖNEMLİ: "Add python.exe to PATH" kutucuğunu işaretleyin!
+   e) "Install Now" tıklayın
+   f) Kurulum bitince bilgisayarı yeniden başlatın
+
+
+3. SERVERİ BAŞLAT
+   
+   "setup_and_run.bat" dosyasına çift tıklayın
+   
+   Script otomatik olarak:
+   - Gerekli paketleri yükleyecek
+   - Veritabanını oluşturacak
+   - Serveri başlatacak
+
+
+4. ERİŞİM
+   
+   Tarayıcınızda açın:
+   - Ana Sayfa: http://localhost:8000
+   - Müşteri: http://localhost:8000/static/index.html
+   - Admin: http://localhost:8000/static/admin.html
+
+
+5. ADMİN GİRİŞİ
+   
+   Kullanıcı: admin
+   Şifre: adminpass
+   OTP: Telegram'dan gelecek (bot token gerekli)
+
+
+========================================
+SORUN ÇÖZÜM
+========================================
+
+"Python bulunamadı" hatası:
+→ Python'u kurun ve PATH'e ekleyin (yukarıdaki 2. adım)
+
+"Redis bağlanamıyor" hatası:
+→ Normal, OTP sistemi çalışmaz ama sistem çalışır
+
+"Port zaten kullanımda" hatası:
+→ 8000 portu başka program kullanıyor
+→ Çözüm: setup_and_run.bat'ı düzenleyin, 8000 yerine 8001 yazın
+
+
+========================================
+DETAYLI DOKÜMANTASYON
+========================================
+
+- PYTHON_KURULUM.md → Python kurulum rehberi
+- KURULUM.md → Detaylı kurulum adımları
+- README.md → Sistem özellikleri
+- PRODUCTION_READY.md → Teknik detaylar
+
+
+========================================
+HAZIR!
+========================================
+
+Python kuruluysa → setup_and_run.bat'a çift tıklayın
+Python kurulu değilse → Önce Python kurun, sonra setup_and_run.bat
+
+İyi çalışmalar! 🚀

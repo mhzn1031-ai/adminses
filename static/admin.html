@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <h2>Admin Panel</h2>
+
+  <div id="loginDiv">
+    <h3>Giriş</h3>
+    <input id="username" placeholder="Kullanıcı adı" />
+    <button id="loginBtn">OTP Gönder</button>
+    <div id="loginStatus"></div>
+  </div>
+
+  <div id="otpDiv" style="display:none">
+    <h3>OTP Doğrulama</h3>
+    <p>Telegram'a gönderilen 6 haneli kodu girin</p>
+    <input id="otpCode" placeholder="000000" maxlength="6" type="text" />
+    <button id="verifyOtpBtn">Doğrula</button>
+    <div id="otpStatus"></div>
+  </div>
+
+  <div id="panel" style="display:none">
+    <div id="callsSection">
+      <h3>Bekleyen Çağrılar (<span id="pendingCount">0</span>)</h3>
+      <div id="pendingCalls"></div>
+      
+      <h3>Geçmiş Aramalar</h3>
+      <div id="callHistory"></div>
+    </div>
+
+    <div id="activeCallDiv" style="display:none">
+      <div id="callInfo">
+        <span id="callerNameDisplay"></span>
+        <span id="callDuration">00:00</span>
+      </div>
+      <div id="videoContainer">
+        <video id="remoteVideo" autoplay playsinline></video>
+        <video id="localVideo" autoplay muted playsinline></video>
+        <button id="fullscreenBtn" title="Tam Ekran">⛶</button>
+      </div>
+      <div id="controls">
+        <button id="toggleAudio" class="active">🔊 Ses</button>
+        <button id="toggleVideo">📷 Kamera</button>
+        <button id="toggleSpeaker" class="active">🔈 Hoparlör</button>
+        <button id="toggleIntercom">📞 Diafon</button>
+        <button id="hangupBtn" class="hangup">Kapat</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/common.js"></script>
+  <script src="/static/js/admin.js"></script>
+</body>
+</html>
